@@ -1,0 +1,82 @@
+### Cria assets
+POST http://localhost:3000/api/assets
+Content-Type: application/json
+
+{
+  "id": "AAAA",
+  "symbol": "AB",
+  "price": 0.2
+}
+
+### Lista assets
+GET http://localhost:3000/api/assets
+
+
+
+
+### Cria wallets
+POST http://localhost:3000/api/wallets
+Content-Type: application/json
+
+{
+  "id": "AAAAA"
+}
+
+### Lista wallets
+GET http://localhost:3000/api/wallets
+
+
+
+### Cria relacioanamento entre wallets e assets
+POST http://localhost:3000/api/wallets/wallet15/assets
+Content-Type: application/json
+
+{
+  "asset_id": "ZZZZZ",
+  "shares": 2
+}
+
+### Lista wallets e assets relacionados por id
+GET http://localhost:3000/api/wallets/wallet17/assets
+
+
+
+### Cria orders do tipo SELL ou BUY
+POST http://localhost:3000/api/orders/wallet15/orders
+Content-Type: application/json
+
+{
+  "asset_id": "ZZZZZ",
+  "shares": 1,
+  "price": 10.5,
+  "type": "SELL"
+}
+
+###
+POST http://localhost:3000/api/orders/wallet17/orders
+Content-Type: application/json
+
+{
+  "asset_id": "ZZZZZ",
+  "shares": 1,
+  "price": 0.5,
+  "type": "BUY"
+}
+
+### Lista orders
+GET http://localhost:3000/api/orders/wallet17/orders
+
+
+### Simula transação sem passar o status no POST
+POST http://localhost:3000/api/orders/wallet15/orders/execute
+Content-Type: application/json
+
+{
+  "order_id": "XXXX",
+  "related_investor_id": "XXXX",
+  "broker_transaction_id": "XXXX",
+  "negotiated_shares": 1,
+  "price": 10.5
+}
+
+
